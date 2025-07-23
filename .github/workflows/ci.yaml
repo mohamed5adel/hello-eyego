@@ -19,7 +19,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
-
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
@@ -32,11 +31,15 @@ jobs:
     - name: Push Docker image to ECR
       run: |
         docker push 351208058482.dkr.ecr.eu-north-1.amazonaws.com/hello-eyego:latest
-
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
       with:
         version: 'latest'
+
+    - name: Setup kubeconfig
+      run: |
+         mkdir -p $HOME/.kube
+         echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
 
     - name: Update Kubernetes deployment
       run: |
