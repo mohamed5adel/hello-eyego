@@ -26,11 +26,11 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t hello-eyego .
-        docker tag hello-eyego:latest 351208058482.dkr.ecr.eu-north-1.amazonaws.com/hello-eyego:latest
+        docker tag hello-eyego:latest 351208058482.dkr.ecr.eu-north-1.amazonaws.com/hello-eyego:${{ github.run_number }}
 
     - name: Push Docker image to ECR
       run: |
-        docker push 351208058482.dkr.ecr.eu-north-1.amazonaws.com/hello-eyego:latest
+        docker push 351208058482.dkr.ecr.eu-north-1.amazonaws.com/hello-eyego:${{ github.run_number }}
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
       with:
@@ -40,7 +40,11 @@ jobs:
       run: |
          mkdir -p $HOME/.kube
          echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
-
     - name: Update Kubernetes deployment
       run: |
-        kubectl apply -f deployment.yaml
+        sed "s|latest|${{ github.run_number }}|g" deployment.yaml | kubectl apply -f deployment.yaml
+
+
+
+
+
