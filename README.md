@@ -1,7 +1,7 @@
 GitHub Repo 
 https://github.com/mohamed5adel/hello-eyego
 Deploy URL
-k8s-default-eyegoing-6bbed183fa-1616173608.eu-north-1.elb.amazonaws.com
+http://k8s-default-eyegoing-6bbed183fa-1616173608.eu-north-1.elb.amazonaws.com/
 # 👁 hello-eyego  A simple Node.js Express app deployed with Docker to AWS Elastic Container Registry (ECR) and then deployed to a Kubernetes cluster using GitHub Actions (CI/CD). 
 
  ---  ## 📦 Tech Stack  - 🟩 Node.js + Express   - 🐳 Docker   - ☁ AWS ECR   - ☸ Kubernetes (EKS or local)   - 🔁 GitHub Actions    ---  ## 📁 Folder Structure  
