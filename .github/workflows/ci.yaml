@@ -42,8 +42,8 @@ jobs:
          echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
     - name: Update Kubernetes deployment
       run: |
-        sed "s|latest|${{ github.run_number }}|g" deployment.yaml | kubectl apply -f deployment.yaml
-
+        sed -i -e 's/latest/${{ github.run_number }}/g' deployment.yaml 
+        kubectl apply -f deployment.yaml
 
 
 
