@@ -58,6 +58,8 @@ AWS_REGION
 
 eu-north-1
 
+KUBE_CONFIG_DATA
+kube config
 ECR_REPOSITORY
 
 hello-eyego
