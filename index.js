@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
         <title>Hello Eyego</title>
         <style>
           body {
-            background-color: red;
+            background-color: green;
             display: flex;
             justify-content: center;
             align-items: center;
